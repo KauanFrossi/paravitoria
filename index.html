@@ -1,0 +1,518 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Para Vitória</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,100;1,9..144,300..600,100&family=Caveat:wght@500;600&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: noite de vinho, uma coluna central de leitura, abas roláveis fixas no topo, foto em arco como peça principal. Single dark look by choice. */
+:root {
+  color-scheme: dark;
+  --bg: #1b0a13;
+  --surface: #2a1220;
+  --surface-2: #381a2c;
+  --ink: #fbede6;
+  --muted: #c8a6aa;
+  --rose: #ff8fa6;
+  --gold: #f3c892;
+  --line: #4a2638;
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-hand: "Caveat", "Segoe Script", cursive;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 56px;
+  min-height: 100vh;
+  background-image: radial-gradient(60rem 30rem at 50% -8rem, #4a1b34 0%, transparent 70%);
+  background-repeat: no-repeat;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1.1; margin: 0; text-wrap: balance; font-variation-settings: "SOFT" 100; }
+p { margin: 0; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.wrap { max-width: 62rem; margin-inline: auto; }
+
+/* tabs */
+.tabs {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  padding-inline: max(16px, env(safe-area-inset-left, 0px));
+  border-bottom: 1px solid var(--line);
+}
+.tabs ul { list-style: none; margin: 0 auto; padding: 10px 0; display: flex; gap: 6px; overflow-x: auto; max-width: 62rem; scrollbar-width: none; }
+.tabs ul::-webkit-scrollbar { display: none; }
+.tab { white-space: nowrap; background: transparent; border: 1px solid transparent; border-radius: 99px; padding: 8px 16px; color: var(--muted); font-weight: 500; font-size: 15px; }
+.tab:hover { color: var(--ink); }
+.tab[aria-selected="true"] { background: var(--rose); color: #3a0d1e; }
+
+.panel { padding-top: 40px; animation: rise .5s ease both; }
+.panel[hidden] { display: none; }
+@keyframes rise { from { opacity: .0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+.eyebrow { font-family: var(--font-hand); font-size: 26px; color: var(--gold); line-height: 1; }
+.lead { color: var(--muted); max-width: 40rem; }
+h2.title { font-size: clamp(2rem, 6vw, 3.2rem); font-style: italic; font-weight: 300; }
+.head { display: grid; gap: 10px; margin-bottom: 28px; }
+
+/* hero */
+.hero { display: grid; gap: 28px; align-items: center; }
+@media (min-width: 820px) { .hero { grid-template-columns: 1fr 1fr; gap: 56px; } }
+.arch { width: min(100%, 24rem); margin-inline: auto; aspect-ratio: 3/4; border-radius: 999px 999px 18px 18px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 0 0 8px var(--bg), 0 0 0 9px var(--rose), 0 30px 60px -20px #000; }
+.arch img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero h1 { font-size: clamp(2.6rem, 9vw, 5rem); font-weight: 300; font-style: italic; }
+.hero h1 b { font-weight: 600; font-style: normal; display: block; color: var(--rose); }
+.hero .lead { margin-top: 16px; font-size: 18px; }
+.counter { margin-top: 28px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 28rem; }
+.counter > div { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 8px 10px; text-align: center; }
+.counter strong { display: block; font-family: var(--font-display); font-size: 2rem; font-weight: 500; line-height: 1.1; color: var(--ink); font-variant-numeric: tabular-nums; }
+.counter span { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.since { margin-top: 14px; font-family: var(--font-hand); font-size: 24px; color: var(--gold); }
+.nudge { margin-top: 26px; display: inline-flex; align-items: center; gap: 10px; background: var(--rose); color: #3a0d1e; border: 0; border-radius: 99px; padding: 14px 24px; font-weight: 600; box-shadow: 0 10px 30px -10px var(--rose); transition: transform .2s; }
+.nudge:hover { transform: translateY(-2px); }
+.nudge svg { width: 20px; height: 20px; }
+.secret { margin-top: 18px; min-height: 3.4em; font-family: var(--font-display); font-style: italic; font-size: 1.25rem; color: var(--gold); max-width: 28rem; }
+
+/* letter */
+.letter { max-width: 40rem; margin-inline: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 6px 6px 22px 6px; padding: clamp(22px, 5vw, 48px); display: grid; gap: 1.1em; }
+.letter .hi { font-family: var(--font-hand); font-size: 34px; color: var(--rose); line-height: 1; }
+.letter p { font-size: 1.08rem; }
+.letter .sign { font-family: var(--font-hand); font-size: 36px; color: var(--gold); line-height: 1.1; }
+.story-photo { max-width: 40rem; margin: 34px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.story-photo { align-items: start; }
+.story-photo img { width: 100%; height: auto; border-radius: 16px; display: block; border: 1px solid var(--line); }
+.line { max-width: 40rem; margin: 44px auto 0; display: grid; gap: 0; border-left: 2px solid var(--line); padding-left: 22px; }
+.line > div { position: relative; padding-bottom: 28px; }
+.line > div::before { content: ""; position: absolute; left: -29px; top: 7px; width: 12px; height: 12px; border-radius: 50%; background: var(--rose); box-shadow: 0 0 0 4px var(--bg); }
+.line > div:last-child { padding-bottom: 0; }
+.line > div:last-child::before { background: transparent; border: 2px dashed var(--gold); }
+.line time { font-family: var(--font-hand); font-size: 24px; color: var(--gold); }
+.line h3 { font-size: 1.4rem; font-weight: 500; }
+.line p { color: var(--muted); }
+
+/* gallery */
+.gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+@media (min-width: 720px) { .gallery { grid-template-columns: repeat(3, 1fr); gap: 12px; } }
+@media (min-width: 1000px) { .gallery { grid-template-columns: repeat(4, 1fr); } }
+.gallery button { display: block; width: 100%; padding: 0; border: 0; background: var(--surface); border-radius: 14px; overflow: hidden; aspect-ratio: 4 / 5; transition: transform .25s; }
+.gallery button:hover { transform: scale(1.02); }
+.gallery img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; display: block; }
+.gallery button.land img { object-position: 50% 50%; }
+.lb { position: fixed; inset: 0; z-index: 50; background: rgba(12, 3, 8, .96); display: grid; place-items: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.lb[hidden] { display: none; }
+.lb img { max-width: 100%; max-height: 82vh; border-radius: 10px; object-fit: contain; }
+.lb-bar { position: absolute; inset: auto 0 0; display: flex; justify-content: center; align-items: center; gap: 18px; padding: 14px max(16px, env(safe-area-inset-right, 0px)) calc(14px + env(safe-area-inset-bottom, 0px)); color: var(--muted); font-variant-numeric: tabular-nums; }
+.round { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); display: grid; place-items: center; font-size: 22px; line-height: 1; }
+.round:hover { background: var(--surface-2); }
+.lb-close { position: absolute; top: calc(12px + env(safe-area-inset-top, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); }
+
+/* videos */
+.videos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 12px; align-items: start; }
+@media (min-width: 820px) { .videos { grid-template-columns: repeat(3, 1fr); gap: 22px 16px; max-width: 52rem; } }
+.videos figure { margin: 0; display: grid; gap: 8px; min-width: 0; }
+.videos video { width: 100%; background: #000; border-radius: 16px; border: 1px solid var(--line); display: block; aspect-ratio: 9 / 16; object-fit: contain; max-height: 78vh; }
+.videos figcaption { font-family: var(--font-hand); font-size: 24px; color: var(--gold); line-height: 1.1; }
+
+/* home */
+.rooms { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.room { background: var(--surface); border: 1px solid var(--line); border-radius: 99px; padding: 10px 20px; font-weight: 500; }
+.room[aria-pressed="true"] { background: var(--gold); color: #3a2208; border-color: var(--gold); }
+.room-text { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: clamp(20px, 4vw, 34px); min-height: 9.5rem; }
+.room-text h3 { font-style: italic; font-size: 1.7rem; margin-bottom: 8px; color: var(--rose); }
+.home-note { margin-top: 36px; max-width: 40rem; display: grid; gap: 1em; }
+.home-note strong { font-family: var(--font-display); font-weight: 500; font-style: italic; font-size: 1.5rem; color: var(--ink); line-height: 1.3; }
+
+/* family */
+.fam { display: grid; gap: 28px; align-items: start; }
+@media (min-width: 820px) { .fam { grid-template-columns: 1.1fr 1fr; gap: 48px; } }
+.fam-text { display: grid; gap: 1em; max-width: 36rem; }
+.fam-text blockquote { margin: 8px 0 0; padding-left: 18px; border-left: 2px solid var(--rose); font-family: var(--font-display); font-style: italic; font-size: 1.35rem; line-height: 1.35; }
+.fam-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.fam-photos { align-items: start; }
+.fam-photos img { width: 100%; height: auto; border-radius: 16px; display: block; border: 1px solid var(--line); }
+.fam-photos img:nth-child(2) { grid-column: 1 / -1; }
+
+/* surprise */
+.reasons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+@media (min-width: 720px) { .reasons { grid-template-columns: repeat(4, 1fr); } }
+.card { perspective: 800px; background: none; border: 0; padding: 0; aspect-ratio: 1; }
+.card-in { position: relative; width: 100%; height: 100%; transition: transform .6s; transform-style: preserve-3d; }
+.card[aria-pressed="true"] .card-in { transform: rotateY(180deg); }
+.face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 16px; display: grid; place-items: center; padding: 14px; text-align: center; border: 1px solid var(--line); }
+.front { background: var(--surface-2); color: var(--rose); }
+.front svg { width: 34px; height: 34px; }
+.front small { display: block; margin-top: 6px; font-family: var(--font-hand); font-size: 22px; color: var(--gold); }
+.back { background: var(--rose); color: #3a0d1e; transform: rotateY(180deg); font-family: var(--font-display); font-style: italic; font-size: clamp(.95rem, 3.4vw, 1.12rem); line-height: 1.3; font-weight: 500; }
+.count { margin-top: 14px; color: var(--muted); font-size: 15px; }
+.ask { margin-top: 64px; text-align: center; display: grid; gap: 20px; justify-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 26px; padding: clamp(28px, 6vw, 56px) 16px; position: relative; overflow: hidden; }
+.ask h3 { font-size: clamp(1.8rem, 6vw, 3rem); font-style: italic; font-weight: 300; max-width: 22rem; }
+.ask-arena { position: relative; width: 100%; max-width: 26rem; height: 150px; }
+.btn-yes, .btn-no { position: absolute; border-radius: 99px; border: 0; font-weight: 600; padding: 14px 28px; }
+.btn-yes { background: var(--rose); color: #3a0d1e; left: 12%; top: 20px; font-size: 20px; padding: 16px 36px; box-shadow: 0 10px 30px -10px var(--rose); }
+.btn-no { background: var(--surface-2); color: var(--ink); border: 1px solid var(--line); right: 12%; top: 28px; transition: left .25s, top .25s, right .25s; }
+.answer { font-family: var(--font-display); font-size: 1.3rem; color: var(--gold); font-style: italic; max-width: 26rem; }
+.answer[hidden] { display: none; }
+
+footer { margin-top: 72px; text-align: center; font-family: var(--font-hand); font-size: 28px; color: var(--gold); }
+canvas#fx { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 60; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .panel { animation: none; }
+  .card-in { transition: none; }
+}
+</style>
+
+<div class="wrap">
+  <nav class="tabs" aria-label="Seções">
+    <ul role="tablist" id="tablist">
+      <li><button class="tab" role="tab" data-t="inicio">Início</button></li>
+      <li><button class="tab" role="tab" data-t="historia">Nossa história</button></li>
+      <li><button class="tab" role="tab" data-t="fotos">Fotos</button></li>
+      <li><button class="tab" role="tab" data-t="videos">Vídeos</button></li>
+      <li><button class="tab" role="tab" data-t="lar">Nosso lar</button></li>
+      <li><button class="tab" role="tab" data-t="familia">Sua família</button></li>
+      <li><button class="tab" role="tab" data-t="surpresa">Surpresa</button></li>
+    </ul>
+  </nav>
+
+  <!-- INÍCIO -->
+  <section class="panel" id="p-inicio" role="tabpanel">
+    <div class="hero">
+      <div class="arch"><img src="img/p14.jpg" alt="Vitória e eu em um mirante, sorrindo" width="1050" height="1400"></div>
+      <div>
+        <div class="eyebrow">para a minha namorada</div>
+        <h1>Vitória <b>Beatriz Amoroso</b></h1>
+        <p class="lead">Fiz este cantinho só para você. Tem a nossa história, as nossas fotos, os nossos vídeos e algumas surpresas escondidas. Clique em tudo.</p>
+        <div class="counter" aria-live="off">
+          <div><strong id="c-y">0</strong><span>anos</span></div>
+          <div><strong id="c-m">0</strong><span>meses</span></div>
+          <div><strong id="c-d">0</strong><span>dias</span></div>
+          <div><strong id="c-h">0</strong><span>horas</span></div>
+          <div><strong id="c-i">0</strong><span>minutos</span></div>
+          <div><strong id="c-s">0</strong><span>segundos</span></div>
+        </div>
+        <p class="since">juntos desde 03 de agosto de 2024</p>
+        <button class="nudge" id="heart-btn" type="button">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.3C.8 8 3 4.5 6.5 4.5c2 0 3.6 1 5.5 3 1.9-2 3.5-3 5.5-3C21 4.5 23.2 8 21.6 11.7 19.5 16.4 12 21 12 21z"/></svg>
+          Toque aqui
+        </button>
+        <p class="secret" id="secret" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTÓRIA -->
+  <section class="panel" id="p-historia" role="tabpanel" hidden>
+    <div class="head">
+      <div class="eyebrow">uma carta</div>
+      <h2 class="title">O que eu queria que você soubesse</h2>
+    </div>
+    <article class="letter">
+      <div class="hi">Vitória,</div>
+      <p>Tudo se iniciou no 6º ano, quando você adorava me enrolar, mas um homem paciente conquista o mundo kkk. Fiz isto aqui como uma demonstração de afeto, para você ver que alguns dos nossos melhores momentos estão registrados.</p>
+      <p>Amor, quero te agradecer por ser essa pessoa maravilhosa, carinhosa, atenciosa e AMOROSA kkk. Uma pessoa que sempre ajuda todo mundo como pode, que se preocupa com quem está ao redor, que chora ao ver um gatinho na rua, sem casa. Você é uma mulher dedicada e esforçada: onde você coloca a mão, as coisas dão certo.</p>
+      <p>Obrigado, amor, por cuidar de mim nesses dois anos. Obrigado por puxar minha orelha quando é necessário, por me apoiar nos momentos mais difíceis e nas decisões que para as pessoas parecem loucura, mas que você vê potencial. Obrigado por ser meu alicerce.</p>
+      <p>Deus foi maravilhoso comigo ao colocar você na minha vida. Minha maior conquista é ter você ao meu lado. Sempre farei de tudo por você, darei até a última gota do meu suor para que possamos viver o que sempre sonhamos e conquistar o que sempre almejamos. Você me inspira, abre meus olhos e me dá confiança. Você é tudo o que eu sempre precisei, tudo o que eu sentia que faltava em mim.</p>
+      <p>São dois anos de namoro, mas dois anos acabam parecendo pouco perto da vida que estamos construindo. Eu te amo e SEMPRE estarei aqui para você, e por você.</p>
+      <div class="sign">Do seu namorado, com todo o amor.</div>
+    </article>
+    <div class="story-photo">
+      <img src="img/p13.jpg" alt="Nós dois nos beijando sob um arco de flores com vista para o vale" loading="lazy" width="1050" height="1400">
+      <img src="img/p18.jpg" alt="Nós dois nos beijando na piscina, com bebidas na mão" loading="lazy" width="1050" height="1400">
+    </div>
+    <div class="line">
+      <div><time>03 · 08 · 2024</time><h3>Onde iniciamos nossa trajetória juntos</h3><p>Porque nossa história, você sabe, vem bem antes disso.</p></div>
+      <div><time>depois</time><h3>Tivemos diversas conquistas</h3><p>Mas a mais marcante, e um dos passos mais importantes, foi o nosso apartamento.</p></div>
+      <div><time>pela frente</time><h3>Uma folha em branco ainda</h3><p>Onde escreveremos um futuro lindo, por estar ao seu lado!</p></div>
+    </div>
+  </section>
+
+  <!-- FOTOS -->
+  <section class="panel" id="p-fotos" role="tabpanel" hidden>
+    <div class="head">
+      <div class="eyebrow">nossos dias</div>
+      <h2 class="title">Cada foto, um motivo para sorrir</h2>
+      <p class="lead">Toque em uma foto para ver grande e deslizar entre elas.</p>
+    </div>
+    <div class="gallery" id="gallery"></div>
+  </section>
+
+  <!-- VÍDEOS -->
+  <section class="panel" id="p-videos" role="tabpanel" hidden>
+    <div class="head">
+      <div class="eyebrow">em movimento</div>
+      <h2 class="title">Para rever quantas vezes quiser</h2>
+    </div>
+    <div class="videos">
+      <figure><video controls playsinline preload="metadata" poster="vid/v2.jpg" src="vid/v2.mp4"></video><figcaption>Mais um pedaço do nosso tempo</figcaption></figure>
+      <figure><video controls playsinline preload="metadata" poster="vid/v4.jpg" src="vid/v4.mp4"></video><figcaption>Nós, no elevador</figcaption></figure>
+      <figure><video controls playsinline preload="metadata" poster="vid/v6.jpg" src="vid/v6.mp4"></video><figcaption>Um recado para você</figcaption></figure>
+      <figure><video controls playsinline preload="metadata" poster="vid/v3.jpg" src="vid/v3.mp4"></video><figcaption>Nossas palavras</figcaption></figure>
+      <figure><video controls playsinline preload="metadata" poster="vid/v5.jpg" src="vid/v5.mp4"></video><figcaption>Mais de nós</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- LAR -->
+  <section class="panel" id="p-lar" role="tabpanel" hidden>
+    <div class="head">
+      <div class="eyebrow">na Penha</div>
+      <h2 class="title">A casa que a gente está construindo</h2>
+      <p class="lead">Um apartamento ainda é só parede até alguém morar nele. Toque em cada cômodo para ver como eu imagino a nossa vida lá dentro.</p>
+    </div>
+    <div class="rooms" id="rooms">
+      <button class="room" type="button" aria-pressed="true" data-r="0">Sala</button>
+      <button class="room" type="button" aria-pressed="false" data-r="1">Cozinha</button>
+      <button class="room" type="button" aria-pressed="false" data-r="2">Quarto</button>
+      <button class="room" type="button" aria-pressed="false" data-r="3">Porta de entrada</button>
+    </div>
+    <div class="room-text" id="room-text" aria-live="polite"></div>
+    <div class="home-note">
+      <p>Eu nunca pensei que fosse sentir tanto orgulho de uma chave. Mas ela abre uma porta que é nossa, e isso muda tudo.</p>
+      <strong>Casa é onde você está. O apartamento só deu endereço para isso.</strong>
+    </div>
+  </section>
+
+  <!-- FAMÍLIA -->
+  <section class="panel" id="p-familia" role="tabpanel" hidden>
+    <div class="fam">
+      <div class="fam-text">
+        <div class="eyebrow">sobre a sua família</div>
+        <h2 class="title">Eu amo a sua família</h2>
+        <p>Quando a gente ama alguém, ama também de onde essa pessoa veio. Eu aprendi muito de você olhando para a sua família: o carinho, o jeito de cuidar, as mesas cheias e as risadas altas.</p>
+        <p>Obrigado por me deixar entrar na vida de vocês. Eu me sinto bem-vindo e em casa, e quero merecer esse lugar todos os dias.</p>
+        <blockquote>Ficar com você é ganhar uma família inteira.</blockquote>
+      </div>
+      <div class="fam-photos">
+        <img src="img/p21.jpg" alt="Selfie de Vitória, de uma senhora e de mim, juntos em um restaurante" loading="lazy" width="1050" height="1400">
+        <img src="img/p02.jpg" alt="Vitória e eu com mais duas pessoas, sorrindo em uma festa" loading="lazy" width="1400" height="933">
+        <img src="img/p05.jpg" alt="Eu ao lado de um homem de blusa rosa, em um salão de festa" loading="lazy" width="933" height="1400">
+      </div>
+    </div>
+  </section>
+
+  <!-- SURPRESA -->
+  <section class="panel" id="p-surpresa" role="tabpanel" hidden>
+    <div class="head">
+      <div class="eyebrow">a parte escondida</div>
+      <h2 class="title">Doze motivos para te amar</h2>
+      <p class="lead">Vire cada cartão. Quando virar todos, aparece uma última pergunta lá embaixo.</p>
+    </div>
+    <div class="reasons" id="reasons"></div>
+    <p class="count" id="count"></p>
+
+    <div class="ask" id="ask">
+      <div class="eyebrow">e agora, a pergunta</div>
+      <h3>Você quer continuar nessa vida comigo?</h3>
+      <div class="ask-arena" id="arena">
+        <button class="btn-yes" id="yes" type="button">Sim</button>
+        <button class="btn-no" id="no" type="button">Não</button>
+      </div>
+      <p class="answer" id="answer" hidden>Eu sabia. Então está combinado: a gente segue junto, na Penha e em qualquer lugar que a vida levar. Te amo, Vitória.</p>
+    </div>
+  </section>
+
+  <footer>Feito com amor, para a Vitória.</footer>
+</div>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <button class="round lb-close" id="lb-close" type="button" aria-label="Fechar">×</button>
+  <img id="lb-img" alt="">
+  <div class="lb-bar">
+    <button class="round" id="lb-prev" type="button" aria-label="Foto anterior">‹</button>
+    <span id="lb-n"></span>
+    <button class="round" id="lb-next" type="button" aria-label="Próxima foto">›</button>
+  </div>
+</div>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<script>
+(function () {
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var HEART = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.3C.8 8 3 4.5 6.5 4.5c2 0 3.6 1 5.5 3 1.9-2 3.5-3 5.5-3C21 4.5 23.2 8 21.6 11.7 19.5 16.4 12 21 12 21z"/></svg>';
+
+  /* ---------- tabs ---------- */
+  var tabs = $$('.tab'), TOKENS = tabs.map(function (t) { return t.dataset.t; });
+  function show(tok, push) {
+    if (TOKENS.indexOf(tok) < 0) tok = 'inicio';
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', String(t.dataset.t === tok)); });
+    $$('.panel').forEach(function (p) { p.hidden = p.id !== 'p-' + tok; });
+    var act = tabs[TOKENS.indexOf(tok)];
+    if (act && act.scrollIntoView) { try { act.scrollIntoView({ inline: 'center', block: 'nearest' }); } catch (e) {} }
+    window.scrollTo(0, 0);
+    if (push) { try { history.replaceState(null, '', '#' + tok); } catch (e) {} }
+  }
+  tabs.forEach(function (t) { t.addEventListener('click', function () { show(t.dataset.t, true); }); });
+  show((location.hash || '').replace('#', ''), false);
+
+  /* ---------- counter ---------- */
+  var START = new Date(2024, 7, 3, 0, 0, 0);
+  function tick() {
+    var n = new Date(), y = n.getFullYear() - START.getFullYear(), m = n.getMonth() - START.getMonth();
+    var base = new Date(START.getFullYear() + y, START.getMonth() + m, START.getDate());
+    if (base > n) { m--; if (m < 0) { m += 12; y--; } base = new Date(START.getFullYear() + y, START.getMonth() + m, START.getDate()); }
+    var rest = Math.floor((n - base) / 1000);
+    var d = Math.floor(rest / 86400); rest -= d * 86400;
+    var h = Math.floor(rest / 3600); rest -= h * 3600;
+    var i = Math.floor(rest / 60), s = rest - i * 60;
+    $('#c-y').textContent = y; $('#c-m').textContent = m; $('#c-d').textContent = d;
+    $('#c-h').textContent = h; $('#c-i').textContent = i; $('#c-s').textContent = s;
+  }
+  tick(); setInterval(tick, 1000);
+
+  /* ---------- hearts fx ---------- */
+  var cv = $('#fx'), cx = cv.getContext('2d'), parts = [], raf = 0;
+  function size() { cv.width = innerWidth * devicePixelRatio; cv.height = innerHeight * devicePixelRatio; }
+  size(); addEventListener('resize', size);
+  var heartImg = new Image();
+  heartImg.src = 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="M12 21s-7.5-4.6-9.6-9.3C.8 8 3 4.5 6.5 4.5c2 0 3.6 1 5.5 3 1.9-2 3.5-3 5.5-3C21 4.5 23.2 8 21.6 11.7 19.5 16.4 12 21 12 21z"/></svg>');
+  var COLORS = ['#ff8fa6', '#f3c892', '#ffc2d0', '#ff5d85'];
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function burst(x, y, n) {
+    if (reduce) return;
+    var dpr = devicePixelRatio;
+    for (var k = 0; k < n; k++) {
+      var a = Math.random() * Math.PI * 2, v = 3 + Math.random() * 7;
+      parts.push({ x: x * dpr, y: y * dpr, vx: Math.cos(a) * v * dpr, vy: (Math.sin(a) * v - 4) * dpr, s: (10 + Math.random() * 20) * dpr, c: COLORS[k % COLORS.length], life: 1, r: Math.random() * 6 });
+    }
+    if (!raf) raf = requestAnimationFrame(loop);
+  }
+  function loop() {
+    cx.clearRect(0, 0, cv.width, cv.height);
+    parts = parts.filter(function (p) { return p.life > 0; });
+    parts.forEach(function (p) {
+      p.x += p.vx; p.y += p.vy; p.vy += .18 * devicePixelRatio; p.vx *= .99; p.life -= .011;
+      cx.globalAlpha = Math.max(p.life, 0);
+      var off = document.createElement('canvas'); off.width = off.height = 64;
+      var o = off.getContext('2d'); o.drawImage(heartImg, 0, 0, 64, 64); o.globalCompositeOperation = 'source-in'; o.fillStyle = p.c; o.fillRect(0, 0, 64, 64);
+      cx.drawImage(off, p.x, p.y, p.s, p.s);
+    });
+    cx.globalAlpha = 1;
+    raf = parts.length ? requestAnimationFrame(loop) : 0;
+    if (!raf) cx.clearRect(0, 0, cv.width, cv.height);
+  }
+
+  /* ---------- secret messages ---------- */
+  var SECRETS = [
+    'Você é a melhor parte dos meus dias.',
+    'Eu escolheria você de novo, todas as vezes.',
+    'Com você, até o silêncio é bom.',
+    'Cada dia a mais ao seu lado vale mais que o anterior.',
+    'Você é minha pessoa preferida no mundo inteiro.',
+    'Obrigado por existir na minha vida.'
+  ];
+  var si = 0;
+  $('#heart-btn').addEventListener('click', function (e) {
+    $('#secret').textContent = SECRETS[si++ % SECRETS.length];
+    var r = e.currentTarget.getBoundingClientRect();
+    burst(r.left + r.width / 2, r.top + r.height / 2, 28);
+  });
+
+  /* ---------- gallery + lightbox ---------- */
+  var PHOTOS = [
+    ['p00', 0], ['n03', 0], ['p08', 1], ['n02', 0], ['p06', 0], ['p10', 0], ['n08', 1], ['p07', 0], ['p15', 0], ['n06', 0], ['p03', 0], ['p17', 0], ['p13', 0], ['n07', 0], ['p04', 0], ['p19', 0], ['n01', 0], ['p09', 1], ['p11', 0], ['p18', 0], ['n05', 0], ['p16', 0], ['n00', 0], ['p12', 0], ['n04', 0], ['p14', 0]
+  ];
+  var g = $('#gallery');
+  PHOTOS.forEach(function (p, i) {
+    var b = document.createElement('button'); b.type = 'button'; if (p[1]) b.className = 'land'; b.setAttribute('aria-label', 'Abrir foto ' + (i + 1));
+    var im = document.createElement('img'); im.src = 'img/' + p[0] + '.jpg'; im.loading = 'lazy'; im.decoding = 'async'; im.alt = 'Foto ' + (i + 1) + ' de nós dois';
+    b.appendChild(im); b.addEventListener('click', function () { openLb(i); }); g.appendChild(b);
+  });
+  var lb = $('#lb'), lbi = $('#lb-img'), cur = 0;
+  function setLb(i) { cur = (i + PHOTOS.length) % PHOTOS.length; lbi.src = 'img/' + PHOTOS[cur][0] + '.jpg'; $('#lb-n').textContent = (cur + 1) + ' / ' + PHOTOS.length; }
+  function openLb(i) { setLb(i); lb.hidden = false; $('#lb-close').focus(); }
+  function closeLb() { lb.hidden = true; }
+  $('#lb-close').addEventListener('click', closeLb);
+  $('#lb-prev').addEventListener('click', function () { setLb(cur - 1); });
+  $('#lb-next').addEventListener('click', function () { setLb(cur + 1); });
+  lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+  addEventListener('keydown', function (e) {
+    if (lb.hidden) return;
+    if (e.key === 'Escape') closeLb(); if (e.key === 'ArrowLeft') setLb(cur - 1); if (e.key === 'ArrowRight') setLb(cur + 1);
+  });
+  var tx = null;
+  lb.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', function (e) {
+    if (tx === null) return; var dx = e.changedTouches[0].clientX - tx; tx = null;
+    if (Math.abs(dx) > 50) setLb(cur + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+
+  /* ---------- rooms ---------- */
+  var ROOMS = [
+    ['Sala', 'Lugar onde vamos assistir e maratonar as nossas séries, num sofazinho baú e retrátil para aproveitarmos o cinema kkk.'],
+    ['Cozinha', 'Pizza, jantar improvisado, música alta e nós dois errando a receita juntos. O cheiro de comida feita com carinho é o cheiro de casa.'],
+    ['Quarto', 'Acordar do seu lado, todos os dias. É a parte que eu mais espero: dormir e acordar com você, já em casa.'],
+    ['Porta de entrada', 'Chegar do trabalho e saber que é a sua voz que vai me receber. Aquela porta fechando atrás da gente, e o mundo ficando do lado de fora.']
+  ];
+  function room(i) {
+    $$('.room').forEach(function (b) { b.setAttribute('aria-pressed', String(+b.dataset.r === i)); });
+    $('#room-text').innerHTML = '<h3></h3><p></p>';
+    $('#room-text h3').textContent = ROOMS[i][0]; $('#room-text p').textContent = ROOMS[i][1];
+  }
+  $$('.room').forEach(function (b) { b.addEventListener('click', function () { room(+b.dataset.r); }); });
+  room(0);
+
+  /* ---------- reasons ---------- */
+  var REASONS = [
+    'Porque o seu sorriso muda o meu dia inteiro.',
+    'Porque com você eu sou a minha melhor versão.',
+    'Porque você cuida de quem ama de um jeito lindo.',
+    'Porque a gente ri até das coisas mais bobas.',
+    'Porque você topa viajar, jantar fora e ficar em casa com a mesma alegria.',
+    'Porque você acredita em nós, mesmo nos dias difíceis.',
+    'Porque você é linda por dentro e por fora.',
+    'Porque a sua família me fez sentir em casa.',
+    'Porque com você eu tenho coragem de sonhar grande.',
+    'Porque você é minha parceira em tudo, até na construção do nosso lar.',
+    'Porque eu nunca me canso de você.',
+    'Porque a única certeza que eu tenho é que quero estar com você.'
+  ];
+  var flipped = 0, rg = $('#reasons');
+  REASONS.forEach(function (t, i) {
+    var c = document.createElement('button'); c.type = 'button'; c.className = 'card'; c.setAttribute('aria-pressed', 'false'); c.setAttribute('aria-label', 'Motivo ' + (i + 1));
+    c.innerHTML = '<div class="card-in"><div class="face front"><div>' + HEART + '<small>motivo ' + (i + 1) + '</small></div></div><div class="face back"></div></div>';
+    $('.back', c).textContent = t;
+    c.addEventListener('click', function () {
+      if (c.getAttribute('aria-pressed') === 'true') return;
+      c.setAttribute('aria-pressed', 'true'); flipped++; upd();
+      var r = c.getBoundingClientRect(); burst(r.left + r.width / 2, r.top + r.height / 2, 8);
+    });
+    rg.appendChild(c);
+  });
+  function upd() {
+    $('#count').textContent = flipped < REASONS.length ? flipped + ' de ' + REASONS.length + ' motivos descobertos' : 'Todos descobertos. A pergunta está logo abaixo.';
+    if (flipped === REASONS.length) { var a = $('#ask'); a.style.borderColor = 'var(--rose)'; setTimeout(function () { a.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' }); }, 600); }
+  }
+  upd();
+
+  /* ---------- the question ---------- */
+  var no = $('#no'), arena = $('#arena');
+  function dodge() {
+    var w = arena.clientWidth - no.offsetWidth, h = arena.clientHeight - no.offsetHeight;
+    no.style.right = 'auto';
+    no.style.left = Math.round(Math.random() * w) + 'px';
+    no.style.top = Math.round(Math.random() * h) + 'px';
+  }
+  ['mouseenter', 'touchstart', 'focus'].forEach(function (ev) { no.addEventListener(ev, function (e) { if (ev === 'touchstart') e.preventDefault(); dodge(); }, { passive: false }); });
+  no.addEventListener('click', dodge);
+  $('#yes').addEventListener('click', function (e) {
+    var r = e.currentTarget.getBoundingClientRect();
+    burst(r.left + r.width / 2, r.top, 60);
+    setTimeout(function () { burst(innerWidth * .25, innerHeight * .5, 40); burst(innerWidth * .75, innerHeight * .5, 40); }, 350);
+    $('#answer').hidden = false; no.hidden = true;
+  });
+})();
+</script>
+
+</body></html>
